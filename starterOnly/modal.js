@@ -5,6 +5,7 @@ const formData = document.querySelectorAll(".formData");
 const modalContent = document.querySelector(".content");
 const btnSubmit = document.querySelector(".btn-submit");
 const btnSignup = document.querySelector(".btn-signup");
+const first = document.getElementById("first");
 
 function editNav() {
   var x = document.getElementById("myTopnav");
@@ -45,17 +46,17 @@ function disabledButton(disabled) {
   }
 }
 
+first.addEventListener("input", function () {
+  if (first.value.length < 2) {
+    first.style.background = "red";
+    disabledButton(true);
+  } else {
+    first.style.background = "green";
+    disabledButton(false);
+  }
+});
+
 // Validate form
 function validate() {
   alert("bien envoyé");
 }
-
-document.getElementById("first").addEventListener("input", function () {
-  if (document.getElementById("first").value.length < 2) {
-    document.getElementById("first").style.background = "red";
-    disabledButton(true);
-  } else {
-    document.getElementById("first").style.background = "green";
-    disabledButton(false);
-  }
-});
