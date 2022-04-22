@@ -41,34 +41,25 @@ modalBtn.forEach((btn) =>
   })
 );
 // disabled submit
-function disabledButton(disabled) {
-  if (!disabled) {
-    btnSubmit.removeAttribute("disabled");
-  } else {
-    btnSubmit.setAttribute("disabled", true);
-  }
-}
+// function disabledButton(disabled) {
+//   if (!disabled) {
+//     btnSubmit.removeAttribute("disabled");
+//   } else {
+//     btnSubmit.setAttribute("disabled", true);
+//   }
+// }
 /* *************** */
 
-first.addEventListener("input", function (e) {
-  let value = e.target.value;
-  if (value == "") {
-    firstPara.innerText = "Veuillez saisir votre prénom";
-    firstPara.style.display = "block";
-    firstPara.style.fontSize = "14px";
-    firstPara.style.color = "red";
-  } else if (value.length <= 2) {
-    firstPara.innerText = "Au moins 2 caractères";
-    firstPara.style.display = "block";
-    firstPara.style.fontSize = "14px";
-    firstPara.style.color = "red";
-  } else {
-    first.removeAttribute("required");
-    firstPara.style.display = "none";
-  }
-});
-
 // Validate form
-function validate() {
-  alert("bien envoyé");
+function validate(e) {
+  let error;
+  if (first.value.length <= 2) {
+    e.preventDefault();
+    error = "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
+    firstPara.innerText = error;
+    firstPara.style.fontSize = "12px";
+    firstPara.style.color = "red";
+    return false;
+  }
+  alert("Votre formulaire a bien été envoyé");
 }
