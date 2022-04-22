@@ -33,3 +33,9 @@ document.querySelector(".btn-signup").addEventListener("click", function () {
     modalContent.style.display = "block";
   }
 });
+
+// Validate form
+
+function validate() {
+  alert("bien envoyé");
+}
