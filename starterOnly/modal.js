@@ -1,3 +1,11 @@
+// DOM Elements
+const modalbg = document.querySelector(".bground");
+const modalBtn = document.querySelectorAll(".modal-btn");
+const formData = document.querySelectorAll(".formData");
+const modalContent = document.querySelector(".content");
+const btnSubmit = document.querySelector(".btn-submit");
+const btnSignup = document.querySelector(".btn-signup");
+
 function editNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -6,12 +14,6 @@ function editNav() {
     x.className = "topnav";
   }
 }
-
-// DOM Elements
-const modalbg = document.querySelector(".bground");
-const modalBtn = document.querySelectorAll(".modal-btn");
-const formData = document.querySelectorAll(".formData");
-const modalContent = document.querySelector(".content");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -28,14 +30,32 @@ document.querySelector(".close").addEventListener("click", function () {
 });
 
 // check if content was display
-document.querySelector(".btn-signup").addEventListener("click", function () {
+btnSignup.addEventListener("click", function () {
   if ((modalContent.style.display = "none")) {
     modalContent.style.display = "block";
   }
 });
 
-// Validate form
+// disabled submit
+function disabledButton(disabled) {
+  if (!disabled) {
+    btnSubmit.removeAttribute("disabled");
+  } else {
+    btnSubmit.setAttribute("disabled", true);
+  }
+}
 
+// Validate form
 function validate() {
   alert("bien envoyé");
 }
+
+document.getElementById("first").addEventListener("input", function () {
+  if (document.getElementById("first").value.length < 2) {
+    document.getElementById("first").style.background = "red";
+    disabledButton(true);
+  } else {
+    document.getElementById("first").style.background = "green";
+    disabledButton(false);
+  }
+});
