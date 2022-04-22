@@ -31,6 +31,7 @@ document.querySelector(".close").addEventListener("click", function () {
   modalbg.style.display = "none";
 });
 
+/* CLOSE MODAL */
 // check if content was display
 modalBtn.forEach((btn) =>
   btn.addEventListener("click", function () {
@@ -39,7 +40,6 @@ modalBtn.forEach((btn) =>
     }
   })
 );
-
 // disabled submit
 function disabledButton(disabled) {
   if (!disabled) {
@@ -48,10 +48,16 @@ function disabledButton(disabled) {
     btnSubmit.setAttribute("disabled", true);
   }
 }
+/* *************** */
 
 first.addEventListener("input", function (e) {
   let value = e.target.value;
-  if (value.length <= 2) {
+  if (value == "") {
+    firstPara.innerText = "Veuillez saisir votre prénom";
+    firstPara.style.display = "block";
+    firstPara.style.fontSize = "14px";
+    firstPara.style.color = "red";
+  } else if (value.length <= 2) {
     firstPara.innerText = "Au moins 2 caractères";
     firstPara.style.display = "block";
     firstPara.style.fontSize = "14px";
