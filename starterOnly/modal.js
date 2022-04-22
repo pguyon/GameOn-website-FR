@@ -4,8 +4,9 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const modalContent = document.querySelector(".content");
 const btnSubmit = document.querySelector(".btn-submit");
-const btnSignup = document.querySelector(".btn-signup");
 const first = document.getElementById("first");
+const last = document.getElementById("last");
+const firstPara = document.getElementById("first__para");
 
 function editNav() {
   var x = document.getElementById("myTopnav");
@@ -26,16 +27,18 @@ function launchModal() {
 
 // Add function on close for display modal content and background content
 document.querySelector(".close").addEventListener("click", function () {
-  modalContent.style.display = "none";
+  modalContent.setAttribute("hidden", true);
   modalbg.style.display = "none";
 });
 
 // check if content was display
-btnSignup.addEventListener("click", function () {
-  if ((modalContent.style.display = "none")) {
-    modalContent.style.display = "block";
-  }
-});
+modalBtn.forEach((btn) =>
+  btn.addEventListener("click", function () {
+    if (modalContent.getAttribute("hidden")) {
+      modalContent.removeAttribute("hidden");
+    }
+  })
+);
 
 // disabled submit
 function disabledButton(disabled) {
@@ -46,13 +49,16 @@ function disabledButton(disabled) {
   }
 }
 
-first.addEventListener("input", function () {
-  if (first.value.length < 2) {
-    first.style.background = "red";
-    disabledButton(true);
+first.addEventListener("input", function (e) {
+  let value = e.target.value;
+  if (value.length <= 2) {
+    firstPara.innerText = "Au moins 2 caractères";
+    firstPara.style.display = "block";
+    firstPara.style.fontSize = "14px";
+    firstPara.style.color = "red";
   } else {
-    first.style.background = "green";
-    disabledButton(false);
+    first.removeAttribute("required");
+    firstPara.style.display = "none";
   }
 });
 
