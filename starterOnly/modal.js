@@ -7,6 +7,7 @@ const btnSubmit = document.querySelector(".btn-submit");
 const first = document.getElementById("first");
 const last = document.getElementById("last");
 const email = document.getElementById("email");
+const quantity = document.getElementById("quantity");
 
 function editNav() {
   var x = document.getElementById("myTopnav");
@@ -78,6 +79,7 @@ function validateInputs() {
   const firstValue = first.value.trim();
   const lastValue = last.value.trim();
   const emailValue = email.value.trim();
+  const quantityValue = quantity.value;
 
   //Check firstname
   if (!firstValue) {
@@ -106,5 +108,17 @@ function validateInputs() {
   // check email
   if (!emailValue) {
     errorMessage(email, "Ce champs ne doit pas être vide");
+  } else {
+    validateMessage(email, "Champs valide");
+  }
+
+  if (!quantityValue) {
+    errorMessage(quantity, "Ce champs ne doit pas être vide");
+  } else if (isNaN(quantityValue)) {
+    errorMessage(quantity, "Vous devez saisir un nombre");
+  } else if (quantityValue < 0) {
+    errorMessage(quantity, "Vous devez saisir un nombre positif");
+  } else {
+    validateMessage(quantity, "Champs valide");
   }
 }
