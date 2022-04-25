@@ -6,6 +6,7 @@ const modalContent = document.querySelector(".content");
 const btnSubmit = document.querySelector(".btn-submit");
 const first = document.getElementById("first");
 const last = document.getElementById("last");
+const email = document.getElementById("email");
 
 function editNav() {
   var x = document.getElementById("myTopnav");
@@ -76,7 +77,9 @@ function validateMessage(elem, message) {
 function validateInputs() {
   const firstValue = first.value.trim();
   const lastValue = last.value.trim();
+  const emailValue = email.value.trim();
 
+  //Check firstname
   if (!firstValue) {
     errorMessage(first, "Ce champs ne doit pas être vide");
   } else if (firstValue.length <= 2) {
@@ -88,6 +91,7 @@ function validateInputs() {
     validateMessage(first, "Champs valide");
   }
 
+  // check lastname
   if (!lastValue) {
     errorMessage(last, "Ce champs ne doit pas être vide");
   } else if (lastValue.length <= 2) {
@@ -97,5 +101,10 @@ function validateInputs() {
     );
   } else {
     validateMessage(last, "Champs valide");
+  }
+
+  // check email
+  if (!emailValue) {
+    errorMessage(email, "Ce champs ne doit pas être vide");
   }
 }
