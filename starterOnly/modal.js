@@ -12,6 +12,8 @@ const birth = document.getElementById("birthdate");
 const location6 = document.getElementById("location6");
 const checkbox2 = document.getElementById("checkbox2");
 
+let firstOk = false;
+
 function editNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -62,11 +64,11 @@ function validateMessage(elem, message) {
   formValidateMessage.classList.add("validate");
 }
 
-// Regex valid email
-const validEmail = (email) => {
-  const regExEmail = /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})$/;
-  return regExEmail.test(String(email).toLowerCase());
-};
+// // Regex valid email
+// const validEmail = (email) => {
+//   const regExEmail = /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})$/;
+//   return regExEmail.test(String(email).toLowerCase());
+// };
 
 // validate location
 function validateLocation() {
@@ -95,24 +97,25 @@ function validateCheckbox() {
   }
 }
 
+//Validate firstname
 function validateFirstname() {
   const firstValue = first.value.trim();
-  //Check firstname
+
+  //if empty input get error message
   if (!firstValue) {
     errorMessage(first, "Ce champs ne doit pas être vide");
-    return false;
   } else if (firstValue.length <= 2) {
     errorMessage(
       first,
       "Veuillez entrer 2 caractères ou plus pour le champ du nom."
     );
-    return false;
   } else {
     validateMessage(first, "");
-    return true;
+    return (firstOk = true);
   }
 }
 
+//Validate lastname
 function validateLastname() {
   const lastValue = last.value.trim();
   // check lastname
@@ -131,6 +134,7 @@ function validateLastname() {
   }
 }
 
+//Validate birthdate
 function validateBirthdate() {
   const birthValue = birth.value.trim();
   // check birthdate
@@ -143,6 +147,7 @@ function validateBirthdate() {
   }
 }
 
+//validate quantity
 function validateQuantity() {
   const quantityValue = quantity.value.trim();
   // check quantity
@@ -157,28 +162,33 @@ function validateQuantity() {
   }
 }
 
-// Validate input form
-function validateInputs() {
+//Validate email
+function valideEmail() {
   const emailValue = email.value.trim();
-
-  validateFirstname();
-  validateLastname();
-  validateBirthdate();
-  validateLocation();
-  validateCheckbox();
-  validateQuantity();
-
   // check email
   if (!emailValue) {
     errorMessage(email, "Ce champs ne doit pas être vide");
-  } else if (!validEmail(emailValue)) {
-    errorMessage(email, "email invalide");
   } else {
     validateMessage(email, "");
   }
 }
+
+// Validate input form
+function validateInputs() {
+  validateFirstname();
+  validateLastname();
+  valideEmail();
+  validateBirthdate();
+  validateLocation();
+  validateCheckbox();
+  validateQuantity();
+}
 // Validate form
 function validate(e) {
-  e.preventDefault();
   validateInputs();
+  if (firstOk) {
+    alert("envoyé");
+  } else {
+    e.preventDefault();
+  }
 }
