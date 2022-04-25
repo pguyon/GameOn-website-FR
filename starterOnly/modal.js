@@ -10,6 +10,7 @@ const email = document.getElementById("email");
 const quantity = document.getElementById("quantity");
 const birth = document.getElementById("birthdate");
 const location6 = document.getElementById("location6");
+const checkbox2 = document.getElementById("checkbox2");
 
 function editNav() {
   var x = document.getElementById("myTopnav");
@@ -44,8 +45,6 @@ modalBtn.forEach((btn) =>
   })
 );
 
-
-
 // Create error message function
 
 function errorMessage(elem, message) {
@@ -70,7 +69,6 @@ const validEmail = (email) => {
 };
 
 // validate location
-
 function validateLocation() {
   const l1 = document.getElementById("location1").checked;
   const l2 = document.getElementById("location2").checked;
@@ -82,6 +80,18 @@ function validateLocation() {
     errorMessage(location6, "Veuillez choisir une ville");
   } else {
     validateMessage(location6, "");
+  }
+}
+
+// Validate condition checkbox
+function validateCheckbox() {
+  const check1 = document.getElementById("checkbox1").checked;
+  const check2 = document.getElementById("checkbox2").checked;
+
+  if (!check1 && !check2) {
+    errorMessage(checkbox2, "Veuillez valider les conditions");
+  } else {
+    validateMessage(checkbox2, "");
   }
 }
 
@@ -129,8 +139,7 @@ function validateInputs() {
   // check birthdate
   if (!birthValue) {
     errorMessage(birth, "Ce champs ne doit pas être vide");
-  }
-  else {
+  } else {
     validateMessage(birth, "");
   }
 
@@ -146,8 +155,8 @@ function validateInputs() {
   }
 
   validateLocation();
+  validateCheckbox();
 }
-
 
 // Validate form
 function validate(e) {
