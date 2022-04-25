@@ -89,43 +89,70 @@ function validateCheckbox() {
   const check2 = document.getElementById("checkbox2").checked;
 
   if (!check1 && !check2) {
-    errorMessage(checkbox2, "Veuillez valider les conditions");
+    errorMessage(checkbox2, "Veuillez accepter les conditions");
   } else {
     validateMessage(checkbox2, "");
   }
 }
 
-// Validate input form
-function validateInputs() {
+function validateFirstname() {
   const firstValue = first.value.trim();
-  const lastValue = last.value.trim();
-  const emailValue = email.value.trim();
-  const quantityValue = quantity.value.trim();
-  const birthValue = birth.value.trim();
-
   //Check firstname
   if (!firstValue) {
     errorMessage(first, "Ce champs ne doit pas être vide");
+    return false;
   } else if (firstValue.length <= 2) {
     errorMessage(
       first,
       "Veuillez entrer 2 caractères ou plus pour le champ du nom."
     );
+    return false;
   } else {
     validateMessage(first, "");
+    return true;
   }
+}
 
+function validateLastname() {
+  const lastValue = last.value.trim();
   // check lastname
   if (!lastValue) {
     errorMessage(last, "Ce champs ne doit pas être vide");
+    return false;
   } else if (lastValue.length <= 2) {
     errorMessage(
       last,
       "Veuillez entrer 2 caractères ou plus pour le champ du nom."
     );
+    return false;
   } else {
     validateMessage(last, "");
+    return true;
   }
+}
+
+function validateBirthdate() {
+  const birthValue = birth.value.trim();
+  // check birthdate
+  if (!birthValue) {
+    errorMessage(birth, "Ce champs ne doit pas être vide");
+    return false;
+  } else {
+    validateMessage(birth, "");
+    return true;
+  }
+}
+
+// Validate input form
+function validateInputs() {
+  const emailValue = email.value.trim();
+  const quantityValue = quantity.value.trim();
+
+  validateFirstname();
+  validateLastname();
+  validateBirthdate();
+  validateLocation();
+  validateCheckbox();
 
   // check email
   if (!emailValue) {
@@ -134,13 +161,6 @@ function validateInputs() {
     errorMessage(email, "email invalide");
   } else {
     validateMessage(email, "");
-  }
-
-  // check birthdate
-  if (!birthValue) {
-    errorMessage(birth, "Ce champs ne doit pas être vide");
-  } else {
-    validateMessage(birth, "");
   }
 
   // check quantity
@@ -153,11 +173,7 @@ function validateInputs() {
   } else {
     validateMessage(quantity, "");
   }
-
-  validateLocation();
-  validateCheckbox();
 }
-
 // Validate form
 function validate(e) {
   e.preventDefault();
