@@ -143,26 +143,8 @@ function validateBirthdate() {
   }
 }
 
-// Validate input form
-function validateInputs() {
-  const emailValue = email.value.trim();
+function validateQuantity() {
   const quantityValue = quantity.value.trim();
-
-  validateFirstname();
-  validateLastname();
-  validateBirthdate();
-  validateLocation();
-  validateCheckbox();
-
-  // check email
-  if (!emailValue) {
-    errorMessage(email, "Ce champs ne doit pas être vide");
-  } else if (!validEmail(emailValue)) {
-    errorMessage(email, "email invalide");
-  } else {
-    validateMessage(email, "");
-  }
-
   // check quantity
   if (!quantityValue) {
     errorMessage(quantity, "Ce champs ne doit pas être vide");
@@ -172,6 +154,27 @@ function validateInputs() {
     errorMessage(quantity, "Vous devez saisir un nombre positif");
   } else {
     validateMessage(quantity, "");
+  }
+}
+
+// Validate input form
+function validateInputs() {
+  const emailValue = email.value.trim();
+
+  validateFirstname();
+  validateLastname();
+  validateBirthdate();
+  validateLocation();
+  validateCheckbox();
+  validateQuantity();
+
+  // check email
+  if (!emailValue) {
+    errorMessage(email, "Ce champs ne doit pas être vide");
+  } else if (!validEmail(emailValue)) {
+    errorMessage(email, "email invalide");
+  } else {
+    validateMessage(email, "");
   }
 }
 // Validate form
