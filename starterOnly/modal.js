@@ -158,7 +158,6 @@ function validateLocation() {
 // Validate condition checkbox
 function validateCheckbox() {
   const check1 = document.getElementById("checkbox1").checked;
-  const check2 = document.getElementById("checkbox2").checked;
 
   if (!check1) {
     errorMessage(checkbox2, "Veuillez accepter les conditions");
