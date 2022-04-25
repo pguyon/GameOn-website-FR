@@ -52,24 +52,7 @@ modalBtn.forEach((btn) =>
 // Validate form
 function validate(e) {
   e.preventDefault();
-  if (!first.value) {
-    e.preventDefault();
-    let error = "Le champ ne peut pas être vide";
-    errorMessage(first, error);
-  } else if (first.value.length <= 2) {
-    e.preventDefault();
-    let error = "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
-    errorMessage(first, error);
-  } else {
-    let valide = "champ valide";
-    validateMessage(first, valide);
-  }
-
-  if (!last.value) {
-    e.preventDefault();
-    let error = "Le champ ne peut pas être vide";
-    errorMessage(last, error);
-  }
+  validateInputs();
 }
 
 // Create error message function
@@ -87,4 +70,32 @@ function validateMessage(elem, message) {
   const validate = formValidateMessage.querySelector("error");
   validate.innerText = message;
   formValidateMessage.classList.add("validate");
+}
+
+// Validate input form
+function validateInputs() {
+  const firstValue = first.value.trim();
+  const lastValue = last.value.trim();
+
+  if (!firstValue) {
+    errorMessage(first, "Ce champs ne doit pas être vide");
+  } else if (firstValue.length <= 2) {
+    errorMessage(
+      first,
+      "Veuillez entrer 2 caractères ou plus pour le champ du nom."
+    );
+  } else {
+    validateMessage(first, "Champs valide");
+  }
+
+  if (!lastValue) {
+    errorMessage(last, "Ce champs ne doit pas être vide");
+  } else if (lastValue.length <= 2) {
+    errorMessage(
+      last,
+      "Veuillez entrer 2 caractères ou plus pour le champ du nom."
+    );
+  } else {
+    validateMessage(last, "Champs valide");
+  }
 }
