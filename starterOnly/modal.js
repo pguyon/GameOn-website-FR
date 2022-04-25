@@ -9,6 +9,7 @@ const last = document.getElementById("last");
 const email = document.getElementById("email");
 const quantity = document.getElementById("quantity");
 const birth = document.getElementById("birthdate");
+const location6 = document.getElementById("location6");
 
 function editNav() {
   var x = document.getElementById("myTopnav");
@@ -42,15 +43,6 @@ modalBtn.forEach((btn) =>
     }
   })
 );
-// disabled submit
-// function disabledButton(disabled) {
-//   if (!disabled) {
-//     btnSubmit.removeAttribute("disabled");
-//   } else {
-//     btnSubmit.setAttribute("disabled", true);
-//   }
-// }
-/* *************** */
 
 // Validate form
 function validate(e) {
@@ -80,6 +72,22 @@ const validEmail = (email) => {
   const regExEmail = /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})$/;
   return regExEmail.test(String(email).toLowerCase());
 };
+
+// validate location
+
+function validateLocation() {
+  const l1 = document.getElementById("location1").checked;
+  const l2 = document.getElementById("location2").checked;
+  const l3 = document.getElementById("location3").checked;
+  const l4 = document.getElementById("location4").checked;
+  const l5 = document.getElementById("location5").checked;
+  const l6 = document.getElementById("location6").checked;
+  if (!l1 && !l2 && !l3 && !l4 && !l5 && !l6) {
+    errorMessage(location6, "Veuillez choisir une ville");
+  } else {
+    validateMessage(location6, "");
+  }
+}
 
 // Validate input form
 function validateInputs() {
@@ -125,9 +133,8 @@ function validateInputs() {
   // check birthdate
   if (!birthValue) {
     errorMessage(birth, "Ce champs ne doit pas être vide");
-  } else if (typeof birthValue != "date") {
-    errorMessage(birth, "Le champs doit être une date");
-  } else {
+  }
+  else {
     validateMessage(birth, "");
   }
 
@@ -141,4 +148,6 @@ function validateInputs() {
   } else {
     validateMessage(quantity, "");
   }
+
+  validateLocation();
 }
