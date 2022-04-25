@@ -52,6 +52,7 @@ function errorMessage(elem, message) {
   const error = formErrorMessage.querySelector("error");
   error.innerText = message;
   formErrorMessage.classList.add("error");
+  formErrorMessage.classList.remove("validate");
 }
 
 // Create valide message function
@@ -60,6 +61,7 @@ function validateMessage(elem, message) {
   const validate = formValidateMessage.querySelector("error");
   validate.innerText = message;
   formValidateMessage.classList.add("validate");
+  formValidateMessage.classList.remove("error");
 }
 
 // // Regex valid email
@@ -67,33 +69,6 @@ function validateMessage(elem, message) {
 //   const regExEmail = /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})$/;
 //   return regExEmail.test(String(email).toLowerCase());
 // };
-
-// validate location
-function validateLocation() {
-  const l1 = document.getElementById("location1").checked;
-  const l2 = document.getElementById("location2").checked;
-  const l3 = document.getElementById("location3").checked;
-  const l4 = document.getElementById("location4").checked;
-  const l5 = document.getElementById("location5").checked;
-  const l6 = document.getElementById("location6").checked;
-  if (!l1 && !l2 && !l3 && !l4 && !l5 && !l6) {
-    errorMessage(location6, "Veuillez choisir une ville");
-  } else {
-    validateMessage(location6, "");
-  }
-}
-
-// Validate condition checkbox
-function validateCheckbox() {
-  const check1 = document.getElementById("checkbox1").checked;
-  const check2 = document.getElementById("checkbox2").checked;
-
-  if (!check1 && !check2) {
-    errorMessage(checkbox2, "Veuillez accepter les conditions");
-  } else {
-    validateMessage(checkbox2, "");
-  }
-}
 
 //Validate firstname
 function validateFirstname() {
@@ -162,6 +137,33 @@ function valideEmail() {
     errorMessage(email, "Ce champs ne doit pas être vide");
   } else {
     validateMessage(email, "");
+  }
+}
+
+// validate location
+function validateLocation() {
+  const l1 = document.getElementById("location1").checked;
+  const l2 = document.getElementById("location2").checked;
+  const l3 = document.getElementById("location3").checked;
+  const l4 = document.getElementById("location4").checked;
+  const l5 = document.getElementById("location5").checked;
+  const l6 = document.getElementById("location6").checked;
+  if (!l1 && !l2 && !l3 && !l4 && !l5 && !l6) {
+    errorMessage(location6, "Veuillez choisir une ville");
+  } else {
+    validateMessage(location6, "");
+  }
+}
+
+// Validate condition checkbox
+function validateCheckbox() {
+  const check1 = document.getElementById("checkbox1").checked;
+  const check2 = document.getElementById("checkbox2").checked;
+
+  if (!check1 && !check2) {
+    errorMessage(checkbox2, "Veuillez accepter les conditions");
+  } else {
+    validateMessage(checkbox2, "");
   }
 }
 
