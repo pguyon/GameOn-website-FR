@@ -53,13 +53,18 @@ modalBtn.forEach((btn) =>
 // Validate form
 function validate(e) {
   let error;
-  if (first.value.length <= 2) {
+  if (!first.value) {
+    e.preventDefault();
+    error = "Le champ ne peut pas être vide";
+    firstPara.innerText = error;
+    return false;
+  }
+  if (0 > first.value.length <= 2) {
     e.preventDefault();
     error = "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
     firstPara.innerText = error;
-    firstPara.style.fontSize = "12px";
-    firstPara.style.color = "red";
     return false;
   }
+
   alert("Votre formulaire a bien été envoyé");
 }

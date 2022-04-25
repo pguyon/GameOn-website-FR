@@ -68,6 +68,11 @@ img {
   display: none;
 }
 
+.error {
+  font-size: 0.5em;
+  color: red;
+}
+
 @media screen and (max-width: 768px) {
   .topnav a {
     display: none;
