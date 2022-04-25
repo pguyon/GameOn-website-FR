@@ -44,11 +44,7 @@ modalBtn.forEach((btn) =>
   })
 );
 
-// Validate form
-function validate(e) {
-  e.preventDefault();
-  validateInputs();
-}
+
 
 // Create error message function
 
@@ -150,4 +146,11 @@ function validateInputs() {
   }
 
   validateLocation();
+}
+
+
+// Validate form
+function validate(e) {
+  e.preventDefault();
+  validateInputs();
 }
