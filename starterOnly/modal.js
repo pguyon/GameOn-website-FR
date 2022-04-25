@@ -112,6 +112,7 @@ function validateInputs() {
     validateMessage(email, "Champs valide");
   }
 
+  // check quantity
   if (!quantityValue) {
     errorMessage(quantity, "Ce champs ne doit pas être vide");
   } else if (isNaN(quantityValue)) {
