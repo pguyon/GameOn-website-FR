@@ -6,7 +6,6 @@ const modalContent = document.querySelector(".content");
 const btnSubmit = document.querySelector(".btn-submit");
 const first = document.getElementById("first");
 const last = document.getElementById("last");
-const firstPara = document.getElementById("first__para");
 
 function editNav() {
   var x = document.getElementById("myTopnav");
@@ -52,6 +51,7 @@ modalBtn.forEach((btn) =>
 
 // Validate form
 function validate(e) {
+  e.preventDefault();
   if (!first.value) {
     e.preventDefault();
     let error = "Le champ ne peut pas être vide";
@@ -61,9 +61,14 @@ function validate(e) {
     let error = "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
     errorMessage(first, error);
   } else {
-    let error = "";
-    errorMessage(first, error);
-    alert("Votre formulaire a bien été envoyé");
+    let valide = "champ valide";
+    validateMessage(first, valide);
+  }
+
+  if (!last.value) {
+    e.preventDefault();
+    let error = "Le champ ne peut pas être vide";
+    errorMessage(last, error);
   }
 }
 
@@ -71,8 +76,15 @@ function validate(e) {
 
 function errorMessage(elem, message) {
   const formErrorMessage = elem.parentElement;
-  const error = document.querySelector("error");
+  const error = formErrorMessage.querySelector("error");
   error.innerText = message;
   formErrorMessage.classList.add("error");
-  return false;
+}
+
+// Create valide message function
+function validateMessage(elem, message) {
+  const formValidateMessage = elem.parentElement;
+  const validate = formValidateMessage.querySelector("error");
+  validate.innerText = message;
+  formValidateMessage.classList.add("validate");
 }

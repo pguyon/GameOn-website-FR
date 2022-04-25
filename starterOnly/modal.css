@@ -73,6 +73,11 @@ img {
   color: red;
 }
 
+.validate {
+  font-size: 0.5em;
+  color: green;
+}
+
 @media screen and (max-width: 768px) {
   .topnav a {
     display: none;
