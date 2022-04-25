@@ -74,6 +74,12 @@ function validateMessage(elem, message) {
   formValidateMessage.classList.add("validate");
 }
 
+// Regex valid email
+const validEmail = (email) => {
+  const regExEmail = /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})$/;
+  return regExEmail.test(String(email).toLowerCase());
+};
+
 // Validate input form
 function validateInputs() {
   const firstValue = first.value.trim();
@@ -108,6 +114,8 @@ function validateInputs() {
   // check email
   if (!emailValue) {
     errorMessage(email, "Ce champs ne doit pas être vide");
+  } else if (!validEmail(emailValue)) {
+    errorMessage(email, "email invalide");
   } else {
     validateMessage(email, "Champs valide");
   }
