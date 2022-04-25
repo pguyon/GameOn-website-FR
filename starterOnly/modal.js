@@ -12,8 +12,6 @@ const birth = document.getElementById("birthdate");
 const location6 = document.getElementById("location6");
 const checkbox2 = document.getElementById("checkbox2");
 
-let firstOk = false;
-
 function editNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -111,7 +109,6 @@ function validateFirstname() {
     );
   } else {
     validateMessage(first, "");
-    return (firstOk = true);
   }
 }
 
@@ -121,16 +118,13 @@ function validateLastname() {
   // check lastname
   if (!lastValue) {
     errorMessage(last, "Ce champs ne doit pas être vide");
-    return false;
   } else if (lastValue.length <= 2) {
     errorMessage(
       last,
       "Veuillez entrer 2 caractères ou plus pour le champ du nom."
     );
-    return false;
   } else {
     validateMessage(last, "");
-    return true;
   }
 }
 
@@ -140,10 +134,8 @@ function validateBirthdate() {
   // check birthdate
   if (!birthValue) {
     errorMessage(birth, "Ce champs ne doit pas être vide");
-    return false;
   } else {
     validateMessage(birth, "");
-    return true;
   }
 }
 
@@ -185,10 +177,6 @@ function validateInputs() {
 }
 // Validate form
 function validate(e) {
+  e.preventDefault();
   validateInputs();
-  if (firstOk) {
-    alert("envoyé");
-  } else {
-    e.preventDefault();
-  }
 }
