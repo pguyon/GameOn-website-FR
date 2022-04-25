@@ -52,19 +52,27 @@ modalBtn.forEach((btn) =>
 
 // Validate form
 function validate(e) {
-  let error;
   if (!first.value) {
     e.preventDefault();
-    error = "Le champ ne peut pas être vide";
-    firstPara.innerText = error;
-    return false;
-  }
-  if (0 > first.value.length <= 2) {
+    let error = "Le champ ne peut pas être vide";
+    errorMessage(first, error);
+  } else if (first.value.length <= 2) {
     e.preventDefault();
-    error = "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
-    firstPara.innerText = error;
-    return false;
+    let error = "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
+    errorMessage(first, error);
+  } else {
+    let error = "";
+    errorMessage(first, error);
+    alert("Votre formulaire a bien été envoyé");
   }
+}
 
-  alert("Votre formulaire a bien été envoyé");
+// Create error message function
+
+function errorMessage(elem, message) {
+  const formErrorMessage = elem.parentElement;
+  const error = document.querySelector("error");
+  error.innerText = message;
+  formErrorMessage.classList.add("error");
+  return false;
 }
