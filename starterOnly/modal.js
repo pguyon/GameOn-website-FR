@@ -125,6 +125,10 @@ function validateInputs() {
   // check birthdate
   if (!birthValue) {
     errorMessage(birth, "Ce champs ne doit pas être vide");
+  } else if (typeof birthValue != "date") {
+    errorMessage(birth, "Le champs doit être une date");
+  } else {
+    validateMessage(birth, "");
   }
 
   // check quantity
