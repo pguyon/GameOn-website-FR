@@ -8,6 +8,7 @@ const first = document.getElementById("first");
 const last = document.getElementById("last");
 const email = document.getElementById("email");
 const quantity = document.getElementById("quantity");
+const birth = document.getElementById("birthdate");
 
 function editNav() {
   var x = document.getElementById("myTopnav");
@@ -85,7 +86,8 @@ function validateInputs() {
   const firstValue = first.value.trim();
   const lastValue = last.value.trim();
   const emailValue = email.value.trim();
-  const quantityValue = quantity.value;
+  const quantityValue = quantity.value.trim();
+  const birthValue = birth.value.trim();
 
   //Check firstname
   if (!firstValue) {
@@ -96,7 +98,7 @@ function validateInputs() {
       "Veuillez entrer 2 caractères ou plus pour le champ du nom."
     );
   } else {
-    validateMessage(first, "Champs valide");
+    validateMessage(first, "");
   }
 
   // check lastname
@@ -108,7 +110,7 @@ function validateInputs() {
       "Veuillez entrer 2 caractères ou plus pour le champ du nom."
     );
   } else {
-    validateMessage(last, "Champs valide");
+    validateMessage(last, "");
   }
 
   // check email
@@ -117,7 +119,12 @@ function validateInputs() {
   } else if (!validEmail(emailValue)) {
     errorMessage(email, "email invalide");
   } else {
-    validateMessage(email, "Champs valide");
+    validateMessage(email, "");
+  }
+
+  // check birthdate
+  if (!birthValue) {
+    errorMessage(birth, "Ce champs ne doit pas être vide");
   }
 
   // check quantity
@@ -128,6 +135,6 @@ function validateInputs() {
   } else if (quantityValue < 0) {
     errorMessage(quantity, "Vous devez saisir un nombre positif");
   } else {
-    validateMessage(quantity, "Champs valide");
+    validateMessage(quantity, "");
   }
 }
