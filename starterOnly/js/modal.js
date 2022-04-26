@@ -68,6 +68,29 @@ function validateMessage(elem, message) {
 const regExEmail = /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})$/;
 const regText = /^[a-z]+/g;
 
+// Validate firstname
+function validateFirst() {
+  const firstValue = first.value.trim();
+  if (!firstValue) {
+    errorMessage(first, emptyInput);
+  } else if (firstValue.length <= 2) {
+    errorMessage(first, twoChars);
+  } else {
+    validateMessage(first, "");
+  }
+}
+// validate lastname
+function validateLast() {
+  const lastValue = last.value.trim();
+  if (!lastValue) {
+    errorMessage(last, emptyInput);
+  } else if (lastValue.length <= 2) {
+    errorMessage(last, twoChars);
+  } else {
+    validateMessage(last, "");
+  }
+}
+
 //Validate birthdate
 function validateBirthdate() {
   const birthValue = birth.value.trim();
@@ -131,63 +154,19 @@ function validateCheckbox() {
   }
 }
 
+function valideInputs() {}
+
 // Validate form
 function validate(e) {
-  const firstValue = document.getElementById("first").value.trim();
-  const lastValue = document.getElementById("last").value.trim();
-
-  if (!firstValue) {
-    e.preventDefault();
-    errorMessage(first, emptyInput);
-    return false;
-  }
-  if (firstValue.length <= 2) {
-    e.preventDefault();
-    errorMessage(first, twoChars);
-    return false;
-  }
-
-  if (firstValue && firstValue.length > 2) {
-    e.preventDefault();
-    validateMessage(first, "");
-    return false;
-  }
-
-  // if (!lastValue) {
-  //   e.preventDefault();
-  //   errorMessage(last, emptyInput);
-  //   return false;
-  // }
-  // if (lastValue.length <= 2) {
-  //   e.preventDefault();
-  //   errorMessage(last, twoChars);
-  //   return false;
-  // }
-  // if (lastValue && lastValue.length > 2) {
-  //   e.preventDefault();
-  //   validateMessage(last, "");
-  //   return true;
-  // }
-
-  if (valideFirst) {
-    alert("message envoyé");
-    return true;
-  }
+  e.preventDefault();
+  validateFirst();
+  validateLast();
+  valideEmail();
+  validateBirthdate();
+  validateQuantity();
+  validateLocation();
+  validateCheckbox();
 }
-
-const valideFirst = () => {
-  const firstValue = document.getElementById("first").value.trim();
-  if (firstValue && firstValue.length > 2) {
-    return true;
-  }
-};
-
-const valideLast = () => {
-  const lastValue = document.getElementById("last").value.trim();
-  if (lastValue && lastValue.length > 2) {
-    return true;
-  }
-};
 
 const emptyInput = "Ce champs ne peu pas être vide";
 const twoChars = "Au moins deux caractères";
