@@ -157,6 +157,10 @@ main {
   display: none;
 }
 
+.regex__error {
+  display: none;
+}
+
 .formData span {
   color: red;
   font-size: 12px;

@@ -52,12 +52,17 @@ function firstnameValidation() {
     document.getElementById("first").classList.add("error-text");
     return false;
   } else if (!regexText.test(firstValue)) {
-    document.getElementById("first__error").classList.remove("error");
+    document
+      .getElementById("first__regex__error")
+      .classList.remove("regex__error");
     document.getElementById("first").classList.add("error-text");
     return false;
     // if condition ok
   } else {
     document.getElementById("first__error").classList.add("error");
+    document
+      .getElementById("first__regex__error")
+      .classList.add("regex__error");
     document.getElementById("first").classList.remove("error-text");
     return true;
   }
