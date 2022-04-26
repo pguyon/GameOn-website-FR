@@ -55,7 +55,7 @@ function errorMessage(elem, message) {
   formErrorMessage.classList.remove("validate");
 }
 
-// Create valide message function
+// // // Create valide message function
 function validateMessage(elem, message) {
   const formValidateMessage = elem.parentElement;
   const validate = formValidateMessage.querySelector("error");
@@ -64,44 +64,9 @@ function validateMessage(elem, message) {
   formValidateMessage.classList.remove("error");
 }
 
-// // Regex valid email
-// const validEmail = (email) => {
-//   const regExEmail = /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})$/;
-//   return regExEmail.test(String(email).toLowerCase());
-// };
-
-//Validate firstname
-function validateFirstname() {
-  const firstValue = first.value.trim();
-
-  //if empty input get error message
-  if (!firstValue) {
-    errorMessage(first, "Ce champs ne doit pas être vide");
-  } else if (firstValue.length <= 2) {
-    errorMessage(
-      first,
-      "Veuillez entrer 2 caractères ou plus pour le champ du nom."
-    );
-  } else {
-    validateMessage(first, "");
-  }
-}
-
-//Validate lastname
-function validateLastname() {
-  const lastValue = last.value.trim();
-  // check lastname
-  if (!lastValue) {
-    errorMessage(last, "Ce champs ne doit pas être vide");
-  } else if (lastValue.length <= 2) {
-    errorMessage(
-      last,
-      "Veuillez entrer 2 caractères ou plus pour le champ du nom."
-    );
-  } else {
-    validateMessage(last, "");
-  }
-}
+// Regex;
+const regExEmail = /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})$/;
+const regText = /^[a-z]+/g;
 
 //Validate birthdate
 function validateBirthdate() {
@@ -166,18 +131,63 @@ function validateCheckbox() {
   }
 }
 
-// Validate input form
-function validateInputs() {
-  validateFirstname();
-  validateLastname();
-  valideEmail();
-  validateBirthdate();
-  validateLocation();
-  validateCheckbox();
-  validateQuantity();
-}
 // Validate form
 function validate(e) {
-  e.preventDefault();
-  validateInputs();
+  const firstValue = document.getElementById("first").value.trim();
+  const lastValue = document.getElementById("last").value.trim();
+
+  if (!firstValue) {
+    e.preventDefault();
+    errorMessage(first, emptyInput);
+    return false;
+  }
+  if (firstValue.length <= 2) {
+    e.preventDefault();
+    errorMessage(first, twoChars);
+    return false;
+  }
+
+  if (firstValue && firstValue.length > 2) {
+    e.preventDefault();
+    validateMessage(first, "");
+    return false;
+  }
+
+  // if (!lastValue) {
+  //   e.preventDefault();
+  //   errorMessage(last, emptyInput);
+  //   return false;
+  // }
+  // if (lastValue.length <= 2) {
+  //   e.preventDefault();
+  //   errorMessage(last, twoChars);
+  //   return false;
+  // }
+  // if (lastValue && lastValue.length > 2) {
+  //   e.preventDefault();
+  //   validateMessage(last, "");
+  //   return true;
+  // }
+
+  if (valideFirst) {
+    alert("message envoyé");
+    return true;
+  }
 }
+
+const valideFirst = () => {
+  const firstValue = document.getElementById("first").value.trim();
+  if (firstValue && firstValue.length > 2) {
+    return true;
+  }
+};
+
+const valideLast = () => {
+  const lastValue = document.getElementById("last").value.trim();
+  if (lastValue && lastValue.length > 2) {
+    return true;
+  }
+};
+
+const emptyInput = "Ce champs ne peu pas être vide";
+const twoChars = "Au moins deux caractères";
