@@ -16,30 +16,22 @@ function editNav() {
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
 }
 
-// Add function on close for display modal content and background content
-document.querySelector(".close").addEventListener("click", function () {
-  modalContent.setAttribute("hidden", true);
+// TODO #1
+// Create variable
+const closeModalButton = document.querySelectorAll(".close");
+// add event listener on button
+closeModalButton.forEach((btn) => btn.addEventListener("click", closeModal));
+// display modal
+function closeModal() {
   modalbg.style.display = "none";
-});
-
-/* CLOSE MODAL */
-// check if content was display
-modalBtn.forEach((btn) =>
-  btn.addEventListener("click", function () {
-    if (modalContent.getAttribute("hidden")) {
-      modalContent.removeAttribute("hidden");
-    }
-  })
-);
+}
 
 // Create error message function
-
 function errorMessage(elem, message) {
   const formErrorMessage = elem.parentElement;
   const error = formErrorMessage.querySelector("error");
@@ -49,5 +41,9 @@ function errorMessage(elem, message) {
 }
 
 function validate() {
-  alert('envoyé');
+  modalBody.innerHTML = " Merci ! Votre réservation a bien été enregistrée.";
+  modalBody.style.height = "600px";
+  modalBody.style.paddingTop = "250px";
+  modalBody.style.paddingLeft = "100px";
+  modalBody.style.paddingRight = "100px";
 }
