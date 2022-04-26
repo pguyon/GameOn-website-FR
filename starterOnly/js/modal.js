@@ -97,12 +97,11 @@ function dateValidation() {
   if (!birthValue) {
     document.getElementById("birth__error").classList.remove("error");
     document.getElementById("birthdate").classList.add("error-text");
-  } else if (typeof birthValue != "date") {
-    document.getElementById("birth__error").classList.remove("error");
-    document.getElementById("birthdate").classList.add("error-text");
+    return false;
   } else {
     document.getElementById("birth__error").classList.add("error");
     document.getElementById("birthdate").classList.remove("error-text");
+    return true;
   }
 }
 
