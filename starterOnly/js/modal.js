@@ -43,14 +43,17 @@ function firstnameValidation() {
   // if empty value
   if (!firstValue) {
     document.getElementById("first__error").classList.remove("error");
+    document.getElementById("first").classList.add("error-text");
     return false;
     // if value <= 2
   } else if (firstValue.length <= 2) {
     document.getElementById("first__error").classList.remove("error");
+    document.getElementById("first").classList.add("error-text");
     return false;
     // if condition ok
   } else {
     document.getElementById("first__error").classList.add("error");
+    document.getElementById("first").classList.remove("error-text");
     return true;
   }
 }
@@ -60,12 +63,15 @@ function lastnameValidation() {
   const lastValue = document.getElementById("last").value.trim();
   if (!lastValue) {
     document.getElementById("last__error").classList.remove("error");
+    document.getElementById("last").classList.add("error-text");
     return false;
   } else if (lastValue.length <= 2) {
     document.getElementById("last__error").classList.remove("error");
+    document.getElementById("last").classList.add("error-text");
     return false;
   } else {
     document.getElementById("last__error").classList.add("error");
+    document.getElementById("last").classList.remove("error-text");
     return true;
   }
 }
@@ -76,9 +82,11 @@ function emailValidation() {
   // testing regex
   if (!regexEmail.test(emailValue)) {
     document.getElementById("email__error").classList.remove("error");
+    document.getElementById("email").classList.add("error-text");
     return false;
   } else {
     document.getElementById("email__error").classList.add("error");
+    document.getElementById("email").classList.remove("error-text");
     return true;
   }
 }

@@ -155,10 +155,9 @@ main {
 /* Text error */
 .error {
   display: none;
- 
 }
 
-.formData  span {
+.formData span {
   color: red;
   font-size: 12px;
 }
@@ -182,6 +181,10 @@ input {
   border-radius: 8px;
   font-size: 20px;
   height: 48px;
+}
+
+.error-text {
+  border: 3px solid red;
 }
 
 .formData[data-error]::after {
