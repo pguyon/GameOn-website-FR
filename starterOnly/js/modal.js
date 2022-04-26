@@ -31,19 +31,27 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 
-// Create error message function
-function errorMessage(elem, message) {
-  const formErrorMessage = elem.parentElement;
-  const error = formErrorMessage.querySelector("error");
-  error.innerText = message;
-  formErrorMessage.classList.add("error");
-  formErrorMessage.classList.remove("validate");
+// TODO #2
+// firstname validation
+function firstnameValidation() {
+  // create variable to focus value
+  const firstValue = document.getElementById("first").value.trim();
+  // if empty value
+  if (!firstValue) {
+    document.getElementById("first__error").classList.remove("error");
+    return false;
+    // if value <= 2
+  } else if (firstValue.length <= 2) {
+    document.getElementById("first__error").classList.remove("error");
+    return false;
+    // if condition ok
+  } else {
+    document.getElementById("first__error").classList.add("error");
+    return true;
+  }
 }
-
-function validate() {
-  modalBody.innerHTML = " Merci ! Votre réservation a bien été enregistrée.";
-  modalBody.style.height = "600px";
-  modalBody.style.paddingTop = "250px";
-  modalBody.style.paddingLeft = "100px";
-  modalBody.style.paddingRight = "100px";
+function validate(e) {
+  e.preventDefault();
+  console.log("test");
+  firstnameValidation();
 }
