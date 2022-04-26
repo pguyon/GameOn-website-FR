@@ -48,13 +48,4 @@ function errorMessage(elem, message) {
   formErrorMessage.classList.remove("validate");
 }
 
-// Create valide message function
-function validateMessage(elem, message) {
-  const formValidateMessage = elem.parentElement;
-  const validate = formValidateMessage.querySelector("error");
-  validate.innerText = message;
-  formValidateMessage.classList.add("validate");
-  formValidateMessage.classList.remove("error");
-}
-
 function validate() {}
