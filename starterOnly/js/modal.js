@@ -123,6 +123,19 @@ function quantityValidation() {
   }
 }
 
+// location validation
+function locationValidation() {
+  const locationValue = document.querySelector(
+    "input[name='location']:checked"
+  );
+  if (locationValue === null) {
+    document.getElementById("location__error").classList.remove("error");
+    return false;
+  } else {
+    document.getElementById("location__error").classList.add("error");
+  }
+}
+
 function validate(e) {
   e.preventDefault();
   console.log("test");
@@ -131,4 +144,5 @@ function validate(e) {
   emailValidation();
   dateValidation();
   quantityValidation();
+  locationValidation();
 }
