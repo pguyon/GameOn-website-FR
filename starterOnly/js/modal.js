@@ -91,10 +91,26 @@ function emailValidation() {
   }
 }
 
+// date validation
+function dateValidation() {
+  const birthValue = document.getElementById("birthdate").value.trim();
+  if (!birthValue) {
+    document.getElementById("birth__error").classList.remove("error");
+    document.getElementById("birthdate").classList.add("error-text");
+  } else if (typeof birthValue != "date") {
+    document.getElementById("birth__error").classList.remove("error");
+    document.getElementById("birthdate").classList.add("error-text");
+  } else {
+    document.getElementById("birth__error").classList.add("error");
+    document.getElementById("birthdate").classList.remove("error-text");
+  }
+}
+
 function validate(e) {
   e.preventDefault();
   console.log("test");
   firstnameValidation();
   lastnameValidation();
   emailValidation();
+  dateValidation();
 }
