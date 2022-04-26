@@ -105,6 +105,24 @@ function dateValidation() {
   }
 }
 
+// quantity validation
+function quantityValidation() {
+  const quantityValue = document.getElementById("quantity").value.trim();
+  if (!quantityValue) {
+    document.getElementById("quantity__error").classList.remove("error");
+    document.getElementById("quantity").classList.add("error-text");
+    return false;
+  } else if (isNaN(quantityValue)) {
+    document.getElementById("quantity__error").classList.remove("error");
+    document.getElementById("quantity").classList.add("error-text");
+    return false;
+  } else {
+    document.getElementById("quantity__error").classList.add("error");
+    document.getElementById("quantity").classList.remove("error-text");
+    return true;
+  }
+}
+
 function validate(e) {
   e.preventDefault();
   console.log("test");
@@ -112,4 +130,5 @@ function validate(e) {
   lastnameValidation();
   emailValidation();
   dateValidation();
+  quantityValidation();
 }
