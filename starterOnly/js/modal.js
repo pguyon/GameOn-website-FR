@@ -14,6 +14,10 @@ function editNav() {
   }
 }
 
+// Regex email
+
+const regexEmail = /^^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // launch modal form
@@ -66,9 +70,25 @@ function lastnameValidation() {
   }
 }
 
+// email validation
+function emailValidation() {
+  const emailValue = document.getElementById("email").value.trim();
+  if (!emailValue) {
+    document.getElementById("email__error").classList.remove("error");
+    return false;
+  } else if (!regexEmail.test(emailValue)) {
+    document.getElementById("email__error").classList.remove("error");
+    return false;
+  } else {
+    document.getElementById("email__error").classList.add("error");
+    return true;
+  }
+}
+
 function validate(e) {
   e.preventDefault();
   console.log("test");
   firstnameValidation();
   lastnameValidation();
+  emailValidation();
 }
