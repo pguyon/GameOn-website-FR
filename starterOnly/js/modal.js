@@ -16,7 +16,8 @@ function editNav() {
 
 // Regex email
 
-const regexEmail = /^^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+const regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+const regexText = /^[A-Za-z]+$/;
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -47,6 +48,10 @@ function firstnameValidation() {
     return false;
     // if value <= 2
   } else if (firstValue.length <= 2) {
+    document.getElementById("first__error").classList.remove("error");
+    document.getElementById("first").classList.add("error-text");
+    return false;
+  } else if (!regexText.test(firstValue)) {
     document.getElementById("first__error").classList.remove("error");
     document.getElementById("first").classList.add("error-text");
     return false;
