@@ -48,4 +48,6 @@ function errorMessage(elem, message) {
   formErrorMessage.classList.remove("validate");
 }
 
-function validate() {}
+function validate() {
+  alert('envoyé');
+}
