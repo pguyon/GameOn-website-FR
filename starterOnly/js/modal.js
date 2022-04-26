@@ -73,10 +73,8 @@ function lastnameValidation() {
 // email validation
 function emailValidation() {
   const emailValue = document.getElementById("email").value.trim();
-  if (!emailValue) {
-    document.getElementById("email__error").classList.remove("error");
-    return false;
-  } else if (!regexEmail.test(emailValue)) {
+  // testing regex
+  if (!regexEmail.test(emailValue)) {
     document.getElementById("email__error").classList.remove("error");
     return false;
   } else {
