@@ -93,7 +93,7 @@ function validateLast() {
   } else if (lastValue.length <= 2) {
     errorMessage(last, twoChars);
   } else if (!regText.test(lastValue)) {
-    errorMessage(last, "Le prénom ne doit contenir que des lettres");
+    errorMessage(last, "Le nom ne doit contenir que des lettres");
   } else {
     validateMessage(last, "");
   }
