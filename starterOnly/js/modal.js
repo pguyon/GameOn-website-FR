@@ -79,8 +79,6 @@ function validateFirst() {
     errorMessage(first, emptyInput);
   } else if (firstValue.length <= 2) {
     errorMessage(first, twoChars);
-  } else if (!regText.test(firstValue)) {
-    errorMessage(first, "Le prénom ne doit contenir que des lettres");
   } else {
     validateMessage(first, "");
   }
@@ -92,8 +90,6 @@ function validateLast() {
     errorMessage(last, emptyInput);
   } else if (lastValue.length <= 2) {
     errorMessage(last, twoChars);
-  } else if (!regText.test(lastValue)) {
-    errorMessage(last, "Le nom ne doit contenir que des lettres");
   } else {
     validateMessage(last, "");
   }
