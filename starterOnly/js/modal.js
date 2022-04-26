@@ -55,7 +55,7 @@ function errorMessage(elem, message) {
   formErrorMessage.classList.remove("validate");
 }
 
-// // // Create valide message function
+// Create valide message function
 function validateMessage(elem, message) {
   const formValidateMessage = elem.parentElement;
   const validate = formValidateMessage.querySelector("error");
@@ -63,6 +63,10 @@ function validateMessage(elem, message) {
   formValidateMessage.classList.add("validate");
   formValidateMessage.classList.remove("error");
 }
+
+// error message
+const emptyInput = "Ce champs ne peu pas être vide";
+const twoChars = "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
 
 // Regex;
 const regExEmail = /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})$/;
@@ -88,6 +92,8 @@ function validateLast() {
     errorMessage(last, emptyInput);
   } else if (lastValue.length <= 2) {
     errorMessage(last, twoChars);
+  } else if (!regText.test(lastValue)) {
+    errorMessage(last, "Le prénom ne doit contenir que des lettres");
   } else {
     validateMessage(last, "");
   }
@@ -169,6 +175,3 @@ function validate(e) {
   validateLocation();
   validateCheckbox();
 }
-
-const emptyInput = "Ce champs ne peu pas être vide";
-const twoChars = "Au moins deux caractères";
