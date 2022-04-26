@@ -50,8 +50,25 @@ function firstnameValidation() {
     return true;
   }
 }
+
+// lastname validation {
+function lastnameValidation() {
+  const lastValue = document.getElementById("last").value.trim();
+  if (!lastValue) {
+    document.getElementById("last__error").classList.remove("error");
+    return false;
+  } else if (lastValue.length <= 2) {
+    document.getElementById("last__error").classList.remove("error");
+    return false;
+  } else {
+    document.getElementById("last__error").classList.add("error");
+    return true;
+  }
+}
+
 function validate(e) {
   e.preventDefault();
   console.log("test");
   firstnameValidation();
+  lastnameValidation();
 }
