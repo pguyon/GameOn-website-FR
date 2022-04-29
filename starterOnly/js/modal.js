@@ -176,7 +176,7 @@ function validate(e) {
     checkboxValidation()
   ) {
     e.preventDefault();
-    document.querySelector(".content__confirm").style.visibility = "visible";
+    document.querySelector(".content__confirm").style.display = "block";
     document.querySelector(".content").style.display = "none";
 
     return true;
@@ -187,3 +187,10 @@ function validate(e) {
     return false;
   }
 }
+
+// add reload on button confirm
+document
+  .getElementById("confirm__submitBtn")
+  .addEventListener("click", function () {
+    window.location.reload();
+  });

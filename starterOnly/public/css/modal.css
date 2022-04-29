@@ -545,5 +545,11 @@ footer {
 }
 
 .content__confirm {
-  visibility: hidden;
+  display: none;
+}
+
+.content__confirm p {
+  text-align: center;
+  padding-top: 250px;
+  margin-bottom: 250px;
 }
