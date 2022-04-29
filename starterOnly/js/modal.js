@@ -146,6 +146,18 @@ function locationValidation() {
   }
 }
 
+// ckeckbox validation
+function checkboxValidation() {
+  const checkboxValue = document.getElementById("checkbox1").checked;
+  if (!checkboxValue) {
+    document.getElementById("checkbox__error").classList.remove("error");
+    return false;
+  } else {
+    document.getElementById("checkbox__error").classList.add("error");
+    return true;
+  }
+}
+
 function validate(e) {
   e.preventDefault();
   console.log("test");
@@ -155,4 +167,5 @@ function validate(e) {
   dateValidation();
   quantityValidation();
   locationValidation();
+  checkboxValidation();
 }
