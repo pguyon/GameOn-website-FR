@@ -2,8 +2,7 @@
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
-const modalContent = document.querySelector(".content");
-const btnSubmit = document.querySelector(".btn-submit");
+const modalBody = document.querySelector(".modal-body");
 
 function editNav() {
   var x = document.getElementById("myTopnav");
@@ -143,6 +142,7 @@ function locationValidation() {
     return false;
   } else {
     document.getElementById("location__error").classList.add("error");
+    return true;
   }
 }
 
@@ -159,13 +159,27 @@ function checkboxValidation() {
 }
 
 function validate(e) {
-  e.preventDefault();
-  console.log("test");
-  firstnameValidation();
-  lastnameValidation();
-  emailValidation();
-  dateValidation();
-  quantityValidation();
-  locationValidation();
-  checkboxValidation();
+  if (
+    firstnameValidation() &&
+    lastnameValidation() &&
+    emailValidation() &&
+    dateValidation() &&
+    quantityValidation() &&
+    locationValidation() &&
+    checkboxValidation()
+  ) {
+    modalBody.innerHTML = " Merci ! Votre réservation a bien été enregistrée.";
+    modalBody.style.height = "600px";
+    modalBody.style.paddingTop = "250px";
+    modalBody.style.paddingLeft = "100px";
+    modalBody.style.paddingRight = "100px";
+    console.log("formaulaire envoyé");
+    return true;
+  } else {
+    e.preventDefault();
+    modalbg.style.display = "block";
+    return false;
+  }
 }
+
+// document.getElementById("submitBtn").addEventListener("click", validate);
