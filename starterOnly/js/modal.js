@@ -78,8 +78,15 @@ function lastnameValidation() {
     document.getElementById("last__error").classList.remove("error");
     document.getElementById("last").classList.add("error-text");
     return false;
+  } else if (!regexText.test(lastValue)) {
+    document
+      .getElementById("last__regex__error")
+      .classList.remove("regex__error");
+    document.getElementById("last").classList.add("error-text");
+    return false;
   } else {
     document.getElementById("last__error").classList.add("error");
+    document.getElementById("last__regex__error").classList.add("regex__error");
     document.getElementById("last").classList.remove("error-text");
     return true;
   }
@@ -158,6 +165,11 @@ function checkboxValidation() {
   }
 }
 
+const modalBodyButton = document.createElement("button");
+modalBody.appendChild(modalBodyButton);
+modalBodyButton.innerText = "Fermer";
+modalBodyButton.style.display = "none";
+
 function validate(e) {
   if (
     firstnameValidation() &&
@@ -169,14 +181,11 @@ function validate(e) {
     checkboxValidation()
   ) {
     // if validate add text confirmation
-    const modalBobyBtn = document.createElement("button");
-    modalBody.appendChild(modalBobyBtn);
-    modalBobyBtn.innerText = "Fermer";
-    modalBobyBtn.style.padding = "15px";
     modalBody.innerText = " Merci pour votre inscription.";
     modalBody.style.height = "600px";
     modalBody.style.paddingTop = "50%";
     modalBody.style.textAlign = "center";
+    modalBodyButton.style.display = "block";
     return true;
   } else {
     // if not validate block the submit
