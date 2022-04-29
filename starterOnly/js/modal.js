@@ -168,18 +168,19 @@ function validate(e) {
     locationValidation() &&
     checkboxValidation()
   ) {
-    modalBody.innerHTML = " Merci ! Votre réservation a bien été enregistrée.";
+    // if validate add text confirmation
+    const modalBobyBtn = document.createElement("button");
+    modalBody.appendChild(modalBobyBtn);
+    modalBobyBtn.innerText = "Fermer";
+    modalBobyBtn.style.padding = "15px";
+    modalBody.innerText = " Merci pour votre inscription.";
     modalBody.style.height = "600px";
-    modalBody.style.paddingTop = "250px";
-    modalBody.style.paddingLeft = "100px";
-    modalBody.style.paddingRight = "100px";
-    console.log("formaulaire envoyé");
+    modalBody.style.paddingTop = "50%";
+    modalBody.style.textAlign = "center";
     return true;
   } else {
+    // if not validate block the submit
     e.preventDefault();
-    modalbg.style.display = "block";
     return false;
   }
 }
-
-// document.getElementById("submitBtn").addEventListener("click", validate);
