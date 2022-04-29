@@ -165,11 +165,6 @@ function checkboxValidation() {
   }
 }
 
-const modalBodyButton = document.createElement("button");
-modalBody.appendChild(modalBodyButton);
-modalBodyButton.innerText = "Fermer";
-modalBodyButton.style.display = "none";
-
 function validate(e) {
   if (
     firstnameValidation() &&
@@ -180,16 +175,15 @@ function validate(e) {
     locationValidation() &&
     checkboxValidation()
   ) {
-    // if validate add text confirmation
-    modalBody.innerText = " Merci pour votre inscription.";
-    modalBody.style.height = "600px";
-    modalBody.style.paddingTop = "50%";
-    modalBody.style.textAlign = "center";
-    modalBodyButton.style.display = "block";
+    e.preventDefault();
+    document.querySelector(".content__confirm").style.visibility = "visible";
+    document.querySelector(".content").style.display = "none";
+
     return true;
   } else {
     // if not validate block the submit
     e.preventDefault();
+
     return false;
   }
 }
