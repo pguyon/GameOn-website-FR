@@ -44,16 +44,23 @@ function firstnameValidation() {
   if (!firstValue) {
     document.getElementById("first__error").classList.remove("error");
     document.getElementById("first").classList.add("error-text");
+    document
+      .getElementById("first__regex__error")
+      .classList.add("regex__error");
     return false;
     // if value <= 2
   } else if (firstValue.length <= 2) {
     document.getElementById("first__error").classList.remove("error");
     document.getElementById("first").classList.add("error-text");
+    document
+      .getElementById("first__regex__error")
+      .classList.add("regex__error");
     return false;
   } else if (!regexText.test(firstValue)) {
     document
       .getElementById("first__regex__error")
       .classList.remove("regex__error");
+    document.getElementById("first__error").classList.add("error");
     document.getElementById("first").classList.add("error-text");
     return false;
     // if condition ok
@@ -73,16 +80,19 @@ function lastnameValidation() {
   if (!lastValue) {
     document.getElementById("last__error").classList.remove("error");
     document.getElementById("last").classList.add("error-text");
+    document.getElementById("last__regex__error").classList.add("regex__error");
     return false;
   } else if (lastValue.length <= 2) {
     document.getElementById("last__error").classList.remove("error");
     document.getElementById("last").classList.add("error-text");
+    document.getElementById("last__regex__error").classList.add("regex__error");
     return false;
   } else if (!regexText.test(lastValue)) {
     document
       .getElementById("last__regex__error")
       .classList.remove("regex__error");
     document.getElementById("last").classList.add("error-text");
+    document.getElementById("last__error").classList.add("error");
     return false;
   } else {
     document.getElementById("last__error").classList.add("error");
