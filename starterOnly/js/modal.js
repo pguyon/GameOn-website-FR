@@ -197,12 +197,10 @@ function validate(e) {
     e.preventDefault();
     document.querySelector(".content__confirm").style.display = "block";
     document.querySelector(".content").style.display = "none";
-
     return true;
   } else {
     // if not validate block the submit
     e.preventDefault();
-
     return false;
   }
 }
