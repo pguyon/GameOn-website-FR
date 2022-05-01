@@ -176,6 +176,13 @@ function checkboxValidation() {
 }
 
 function validate(e) {
+  firstnameValidation();
+  lastnameValidation();
+  emailValidation();
+  dateValidation();
+  quantityValidation();
+  locationValidation();
+  checkboxValidation();
   if (
     firstnameValidation() &&
     lastnameValidation() &&
