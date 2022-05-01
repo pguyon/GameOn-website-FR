@@ -176,6 +176,7 @@ function checkboxValidation() {
 }
 
 function validate(e) {
+  // check all validation
   firstnameValidation();
   lastnameValidation();
   emailValidation();
@@ -183,6 +184,7 @@ function validate(e) {
   quantityValidation();
   locationValidation();
   checkboxValidation();
+  // if form is validate add confirm message
   if (
     firstnameValidation() &&
     lastnameValidation() &&
