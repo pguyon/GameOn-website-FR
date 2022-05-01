@@ -119,13 +119,28 @@ function emailValidation() {
 
 // date validation
 function dateValidation() {
-  const birthValue = document.getElementById("birthdate").value.trim();
-  if (!birthValue) {
+  const birthdateValue = document.getElementById("birthdate").value.trim();
+  const birthValue = new Date(document.getElementById("birthdate").value);
+  const today = new Date();
+  if (!birthdateValue) {
     document.getElementById("birth__error").classList.remove("error");
+    document.getElementById("birthdate").classList.add("error-text");
+    document
+      .getElementById("invalidBirth__error")
+      .classList.add("regex__error");
+    return false;
+  } else if (birthValue > today) {
+    document.getElementById("birth__error").classList.add("error");
+    document
+      .getElementById("invalidBirth__error")
+      .classList.remove("regex__error");
     document.getElementById("birthdate").classList.add("error-text");
     return false;
   } else {
     document.getElementById("birth__error").classList.add("error");
+    document
+      .getElementById("invalidBirth__error")
+      .classList.add("regex__error");
     document.getElementById("birthdate").classList.remove("error-text");
     return true;
   }
