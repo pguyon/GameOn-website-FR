@@ -225,6 +225,8 @@ document
   });
 
 function confirmMessage() {
+  const firstValue = document.getElementById("first").value.trim();
+  console.log(firstValue);
   document.querySelector(".content__confirm").style.display = "block";
   document.querySelector(".content").style.display = "none";
 }
