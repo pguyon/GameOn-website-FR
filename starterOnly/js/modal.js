@@ -210,13 +210,10 @@ function validate(e) {
     checkboxValidation()
   ) {
     e.preventDefault();
-    document.querySelector(".content__confirm").style.display = "block";
-    document.querySelector(".content").style.display = "none";
-    return true;
+    confirmMessage();
   } else {
     // if not validate block the submit
     e.preventDefault();
-    return false;
   }
 }
 
@@ -226,3 +223,8 @@ document
   .addEventListener("click", function () {
     window.location.reload();
   });
+
+function confirmMessage() {
+  document.querySelector(".content__confirm").style.display = "block";
+  document.querySelector(".content").style.display = "none";
+}
