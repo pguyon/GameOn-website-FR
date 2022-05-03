@@ -3,6 +3,10 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const modalBody = document.querySelector(".modal-body");
+// create variables for firstname section
+const first = document.getElementById("first");
+const firstError = document.getElementById("first__error");
+const firstRegError = document.getElementById("first__regex__error");
 
 function editNav() {
   var x = document.getElementById("myTopnav");
@@ -38,38 +42,33 @@ function closeModal() {
 // TODO #2
 // firstname validation
 function firstnameValidation() {
-  // create variable to focus value
+  // create variable to focus value and remove spaces
   const firstValue = document.getElementById("first").value.trim();
   // if empty value
   if (!firstValue) {
-    document.getElementById("first__error").classList.remove("error");
-    document.getElementById("first").classList.add("error-text");
-    document
-      .getElementById("first__regex__error")
-      .classList.add("regex__error");
+    //display the error message
+    firstError.classList.remove("error");
+    // add class for red border
+    first.classList.add("error-text");
+    // hide regex message error
+    firstRegError.classList.add("regex__error");
     return false;
     // if value <= 2
   } else if (firstValue.length <= 2) {
-    document.getElementById("first__error").classList.remove("error");
-    document.getElementById("first").classList.add("error-text");
-    document
-      .getElementById("first__regex__error")
-      .classList.add("regex__error");
+    firstError.classList.remove("error");
+    first.classList.add("error-text");
+    firstRegError.classList.add("regex__error");
     return false;
   } else if (!regexText.test(firstValue)) {
-    document
-      .getElementById("first__regex__error")
-      .classList.remove("regex__error");
-    document.getElementById("first__error").classList.add("error");
-    document.getElementById("first").classList.add("error-text");
+    firstRegError.classList.remove("regex__error");
+    firstError.classList.add("error");
+    first.classList.add("error-text");
     return false;
     // if condition ok
   } else {
-    document.getElementById("first__error").classList.add("error");
-    document
-      .getElementById("first__regex__error")
-      .classList.add("regex__error");
-    document.getElementById("first").classList.remove("error-text");
+    firstError.classList.add("error");
+    firstRegError.classList.add("regex__error");
+    first.classList.remove("error-text");
     return true;
   }
 }
