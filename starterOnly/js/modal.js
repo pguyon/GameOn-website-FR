@@ -3,10 +3,21 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const modalBody = document.querySelector(".modal-body");
-// create variables for firstname section
+// create variables for firstname validation
 const first = document.getElementById("first");
 const firstError = document.getElementById("first__error");
 const firstRegError = document.getElementById("first__regex__error");
+// create variables for lastname validation
+const last = document.getElementById("last");
+const lastError = document.getElementById("last__error");
+const lastRegError = document.getElementById("last__regex__error");
+// create variables for email validation
+const email = document.getElementById("email");
+const emailError = document.getElementById("email__error");
+// create variables for date validation
+const birth = document.getElementById("birthdate");
+const birthError = document.getElementById("birth__error");
+const invalidBirth = document.getElementById("invalidBirth__error");
 
 function editNav() {
   var x = document.getElementById("myTopnav");
@@ -77,26 +88,25 @@ function firstnameValidation() {
 function lastnameValidation() {
   const lastValue = document.getElementById("last").value.trim();
   if (!lastValue) {
-    document.getElementById("last__error").classList.remove("error");
-    document.getElementById("last").classList.add("error-text");
-    document.getElementById("last__regex__error").classList.add("regex__error");
+    lastError.classList.remove("error");
+    last.classList.add("error-text");
+    lastRegError.classList.add("regex__error");
     return false;
   } else if (lastValue.length <= 2) {
-    document.getElementById("last__error").classList.remove("error");
-    document.getElementById("last").classList.add("error-text");
-    document.getElementById("last__regex__error").classList.add("regex__error");
+    lastError.classList.remove("error");
+    last.classList.add("error-text");
+    lastRegError.classList.add("regex__error");
     return false;
   } else if (!regexText.test(lastValue)) {
-    document
-      .getElementById("last__regex__error")
-      .classList.remove("regex__error");
-    document.getElementById("last").classList.add("error-text");
-    document.getElementById("last__error").classList.add("error");
+    document;
+    lastRegError.classList.remove("regex__error");
+    last.classList.add("error-text");
+    lastError.classList.add("error");
     return false;
   } else {
-    document.getElementById("last__error").classList.add("error");
-    document.getElementById("last__regex__error").classList.add("regex__error");
-    document.getElementById("last").classList.remove("error-text");
+    lastError.classList.add("error");
+    lastRegError.classList.add("regex__error");
+    last.classList.remove("error-text");
     return true;
   }
 }
@@ -106,12 +116,12 @@ function emailValidation() {
   const emailValue = document.getElementById("email").value.trim();
   // testing regex
   if (!regexEmail.test(emailValue)) {
-    document.getElementById("email__error").classList.remove("error");
-    document.getElementById("email").classList.add("error-text");
+    emailError.classList.remove("error");
+    email.classList.add("error-text");
     return false;
   } else {
-    document.getElementById("email__error").classList.add("error");
-    document.getElementById("email").classList.remove("error-text");
+    emailError.classList.add("error");
+    email.classList.remove("error-text");
     return true;
   }
 }
@@ -119,28 +129,26 @@ function emailValidation() {
 // date validation
 function dateValidation() {
   const birthdateValue = document.getElementById("birthdate").value.trim();
+  // create variable to pick up date
   const birthValue = new Date(document.getElementById("birthdate").value);
+  // create a vaiable for toay
   const today = new Date();
   if (!birthdateValue) {
-    document.getElementById("birth__error").classList.remove("error");
-    document.getElementById("birthdate").classList.add("error-text");
-    document
-      .getElementById("invalidBirth__error")
-      .classList.add("regex__error");
+    birthError.classList.remove("error");
+    birth.classList.add("error-text");
+    invalidBirth.classList.add("regex__error");
     return false;
-  } else if (birthValue > today) {
-    document.getElementById("birth__error").classList.add("error");
-    document
-      .getElementById("invalidBirth__error")
-      .classList.remove("regex__error");
-    document.getElementById("birthdate").classList.add("error-text");
+  }
+  // compare choice and today
+  else if (birthValue > today) {
+    birthError.classList.add("error");
+    invalidBirth.classList.remove("regex__error");
+    birth.classList.add("error-text");
     return false;
   } else {
-    document.getElementById("birth__error").classList.add("error");
-    document
-      .getElementById("invalidBirth__error")
-      .classList.add("regex__error");
-    document.getElementById("birthdate").classList.remove("error-text");
+    birthError.classList.add("error");
+    invalidBirth.classList.add("regex__error");
+    birth.classList.remove("error-text");
     return true;
   }
 }
