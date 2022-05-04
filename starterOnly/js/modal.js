@@ -237,3 +237,41 @@ function confirmMessage() {
   document.querySelector(".content__confirm").style.display = "block";
   document.querySelector(".content").style.display = "none";
 }
+
+// function checkInput(
+//   inputValue,
+//   inputId,
+//   inputErrorMessage,
+//   inputRegexMessage,
+//   inputRegex
+// ) {
+//   // if empty value
+//   if (!inputValue) {
+//     //display the error message
+//     inputErrorMessage.classList.remove("error");
+//     // add class for red border
+//     inputId.classList.add("error-text");
+//     // hide regex message error
+//     inputRegexMessage.classList.add("regex__error");
+//     return false;
+//     // if value <= 2
+//   } else if (inputValue.length <= 2) {
+//     inputErrorMessage.classList.remove("error");
+//     inputId.classList.add("error-text");
+//     inputRegexMessage.classList.add("regex__error");
+//     return false;
+//   } else if (!inputRegex.test(inputValue)) {
+//     inputErrorMessage.classList.add("error");
+//     inputId.classList.add("error-text");
+//     inputRegexMessage.classList.remove("regex__error");
+//     return false;
+//     // if condition ok
+//   } else {
+//     inputErrorMessage.classList.add("error");
+//     inputId.classList.remove("error-text");
+//     inputRegexMessage.classList.add("regex__error");
+//     return true;
+//   }
+// }
+
+// checkInput(firstValue, first, firstError, firstRegError, regexText);
