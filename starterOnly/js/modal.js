@@ -15,6 +15,7 @@ const lastRegError = document.getElementById("last__regex__error");
 // create variables for email validation
 const email = document.getElementById("email");
 const emailError = document.getElementById("email__error");
+const emailRegexError = document.getElementById("email__regex__error");
 // create variables for date validation
 const birth = document.getElementById("birthdate");
 const birthError = document.getElementById("birth__error");
@@ -122,12 +123,21 @@ function lastnameValidation() {
 // email validation
 function emailValidation() {
   const emailValue = document.getElementById("email").value.trim();
-  // testing regex
-  if (!regexEmail.test(emailValue)) {
+
+  if (!emailValue) {
     emailError.classList.remove("error");
+    emailRegexError.classList.add("regex__error");
     email.classList.add("error-text");
     return false;
+  }
+  // testing regex
+  else if (!regexEmail.test(emailValue)) {
+    emailRegexError.classList.remove("regex__error");
+    email.classList.add("error-text");
+    emailError.classList.add("error");
+    return false;
   } else {
+    emailRegexError.classList.add("regex__error");
     emailError.classList.add("error");
     email.classList.remove("error-text");
     return true;
