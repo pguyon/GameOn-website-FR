@@ -7,6 +7,7 @@ const modalBody = document.querySelector(".modal-body");
 const first = document.getElementById("first");
 const firstError = document.getElementById("first__error");
 const firstRegError = document.getElementById("first__regex__error");
+const firstValue = document.getElementById("first").value.trim();
 // create variables for lastname validation
 const last = document.getElementById("last");
 const lastError = document.getElementById("last__error");
@@ -18,6 +19,13 @@ const emailError = document.getElementById("email__error");
 const birth = document.getElementById("birthdate");
 const birthError = document.getElementById("birth__error");
 const invalidBirth = document.getElementById("invalidBirth__error");
+// create variables for quantity validation
+const quantityError = document.getElementById("quantity__error");
+const quantity = document.getElementById("quantity");
+// create variables for location validation
+const locationError = document.getElementById("location__error");
+// create variables for condition validaion
+const conditionError = document.getElementById("checkbox__error");
 
 function editNav() {
   var x = document.getElementById("myTopnav");
@@ -157,16 +165,18 @@ function dateValidation() {
 function quantityValidation() {
   const quantityValue = document.getElementById("quantity").value.trim();
   if (!quantityValue) {
-    document.getElementById("quantity__error").classList.remove("error");
-    document.getElementById("quantity").classList.add("error-text");
+    quantityError.classList.remove("error");
+    quantity.classList.add("error-text");
     return false;
-  } else if (isNaN(quantityValue)) {
-    document.getElementById("quantity__error").classList.remove("error");
-    document.getElementById("quantity").classList.add("error-text");
+  }
+  //check if it is a number
+  else if (isNaN(quantityValue)) {
+    quantityError.classList.remove("error");
+    quantity.classList.add("error-text");
     return false;
   } else {
-    document.getElementById("quantity__error").classList.add("error");
-    document.getElementById("quantity").classList.remove("error-text");
+    quantityError.classList.add("error");
+    quantity.classList.remove("error-text");
     return true;
   }
 }
@@ -177,10 +187,10 @@ function locationValidation() {
     "input[name='location']:checked"
   );
   if (locationValue === null) {
-    document.getElementById("location__error").classList.remove("error");
+    locationError.classList.remove("error");
     return false;
   } else {
-    document.getElementById("location__error").classList.add("error");
+    locationError.classList.add("error");
     return true;
   }
 }
@@ -189,14 +199,15 @@ function locationValidation() {
 function checkboxValidation() {
   const checkboxValue = document.getElementById("checkbox1").checked;
   if (!checkboxValue) {
-    document.getElementById("checkbox__error").classList.remove("error");
+    conditionError.classList.remove("error");
     return false;
   } else {
-    document.getElementById("checkbox__error").classList.add("error");
+    conditionError.classList.add("error");
     return true;
   }
 }
 
+// check all validation
 function validate(e) {
   // check all validation
   firstnameValidation();
@@ -238,40 +249,39 @@ function confirmMessage() {
   document.querySelector(".content").style.display = "none";
 }
 
-// function checkInput(
-//   inputValue,
-//   inputId,
-//   inputErrorMessage,
-//   inputRegexMessage,
-//   inputRegex
-// ) {
-//   // if empty value
-//   if (!inputValue) {
-//     //display the error message
-//     inputErrorMessage.classList.remove("error");
-//     // add class for red border
-//     inputId.classList.add("error-text");
-//     // hide regex message error
-//     inputRegexMessage.classList.add("regex__error");
-//     return false;
-//     // if value <= 2
-//   } else if (inputValue.length <= 2) {
-//     inputErrorMessage.classList.remove("error");
-//     inputId.classList.add("error-text");
-//     inputRegexMessage.classList.add("regex__error");
-//     return false;
-//   } else if (!inputRegex.test(inputValue)) {
-//     inputErrorMessage.classList.add("error");
-//     inputId.classList.add("error-text");
-//     inputRegexMessage.classList.remove("regex__error");
-//     return false;
-//     // if condition ok
-//   } else {
-//     inputErrorMessage.classList.add("error");
-//     inputId.classList.remove("error-text");
-//     inputRegexMessage.classList.add("regex__error");
-//     return true;
-//   }
-// }
-
+function checkInput(
+  inputValue,
+  inputId,
+  inputErrorMessage,
+  inputRegexMessage,
+  inputRegex
+) {
+  // if empty value
+  if (!inputValue) {
+    //display the error message
+    inputErrorMessage.classList.remove("error");
+    // add class for red border
+    inputId.classList.add("error-text");
+    // hide regex message error
+    inputRegexMessage.classList.add("regex__error");
+    return false;
+    // if value <= 2
+  } else if (inputValue.length <= 2) {
+    inputErrorMessage.classList.remove("error");
+    inputId.classList.add("error-text");
+    inputRegexMessage.classList.add("regex__error");
+    return false;
+  } else if (!inputRegex.test(inputValue)) {
+    inputErrorMessage.classList.add("error");
+    inputId.classList.add("error-text");
+    inputRegexMessage.classList.remove("regex__error");
+    return false;
+    // if condition ok
+  } else {
+    inputErrorMessage.classList.add("error");
+    inputId.classList.remove("error-text");
+    inputRegexMessage.classList.add("regex__error");
+    return true;
+  }
+}
 // checkInput(firstValue, first, firstError, firstRegError, regexText);
