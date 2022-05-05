@@ -3,28 +3,35 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const modalBody = document.querySelector(".modal-body");
+
 // create variables for firstname validation
 const first = document.getElementById("first");
 const firstError = document.getElementById("first__error");
 const firstRegError = document.getElementById("first__regex__error");
 const firstValue = document.getElementById("first").value.trim();
+
 // create variables for lastname validation
 const last = document.getElementById("last");
 const lastError = document.getElementById("last__error");
 const lastRegError = document.getElementById("last__regex__error");
+
 // create variables for email validation
 const email = document.getElementById("email");
 const emailError = document.getElementById("email__error");
 const emailRegexError = document.getElementById("email__regex__error");
+
 // create variables for date validation
 const birth = document.getElementById("birthdate");
 const birthError = document.getElementById("birth__error");
 const invalidBirth = document.getElementById("invalidBirth__error");
+
 // create variables for quantity validation
 const quantityError = document.getElementById("quantity__error");
 const quantity = document.getElementById("quantity");
+
 // create variables for location validation
 const locationError = document.getElementById("location__error");
+
 // create variables for condition validaion
 const conditionError = document.getElementById("checkbox__error");
 
@@ -258,40 +265,3 @@ function confirmMessage() {
   document.querySelector(".content__confirm").style.display = "block";
   document.querySelector(".content").style.display = "none";
 }
-
-function checkInput(
-  inputValue,
-  inputId,
-  inputErrorMessage,
-  inputRegexMessage,
-  inputRegex
-) {
-  // if empty value
-  if (!inputValue) {
-    //display the error message
-    inputErrorMessage.classList.remove("error");
-    // add class for red border
-    inputId.classList.add("error-text");
-    // hide regex message error
-    inputRegexMessage.classList.add("regex__error");
-    return false;
-    // if value <= 2
-  } else if (inputValue.length <= 2) {
-    inputErrorMessage.classList.remove("error");
-    inputId.classList.add("error-text");
-    inputRegexMessage.classList.add("regex__error");
-    return false;
-  } else if (!inputRegex.test(inputValue)) {
-    inputErrorMessage.classList.add("error");
-    inputId.classList.add("error-text");
-    inputRegexMessage.classList.remove("regex__error");
-    return false;
-    // if condition ok
-  } else {
-    inputErrorMessage.classList.add("error");
-    inputId.classList.remove("error-text");
-    inputRegexMessage.classList.add("regex__error");
-    return true;
-  }
-}
-// checkInput(firstValue, first, firstError, firstRegError, regexText);
