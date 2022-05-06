@@ -155,21 +155,28 @@ function dateValidation() {
   const birthdateValue = document.getElementById("birthdate").value.trim();
   // create variable to pick up date
   const birthValue = new Date(document.getElementById("birthdate").value);
-  // create a vaiable for toay
+  // create a vaiable for today
   const today = new Date();
+
+  //if the field is empty we add the error message and remove the date error message if it is present
   if (!birthdateValue) {
     birthError.classList.remove("error");
     birth.classList.add("error-text");
     invalidBirth.classList.add("regex__error");
     return false;
   }
-  // compare choice and today
+
+  // we compare the date of birth and the current date, if the date of birth
+  // is greater than the current date we add the error message and we remove the error message from the free field if it is present
   else if (birthValue > today) {
     birthError.classList.add("error");
     invalidBirth.classList.remove("regex__error");
     birth.classList.add("error-text");
     return false;
-  } else {
+  }
+
+  //if the conditions are met, all error messages are removed
+  else {
     birthError.classList.add("error");
     invalidBirth.classList.add("regex__error");
     birth.classList.remove("error-text");
