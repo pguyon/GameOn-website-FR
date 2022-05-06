@@ -271,7 +271,13 @@ function checkboxValidation() {
   }
 }
 
-// check all validation
+//creation of a function to display the registration confirmation modal
+function confirmMessage() {
+  document.querySelector(".content__confirm").style.display = "block";
+  document.querySelector(".content").style.display = "none";
+}
+
+// Function for validation
 function validate(e) {
   // check all validation
   firstnameValidation();
@@ -306,10 +312,3 @@ document
   .addEventListener("click", function () {
     window.location.reload();
   });
-
-function confirmMessage() {
-  const firstValue = document.getElementById("first").value.trim();
-  console.log(firstValue);
-  document.querySelector(".content__confirm").style.display = "block";
-  document.querySelector(".content").style.display = "none";
-}
