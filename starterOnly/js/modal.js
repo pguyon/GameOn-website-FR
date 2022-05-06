@@ -130,19 +130,24 @@ function lastnameValidation() {
 function emailValidation() {
   const emailValue = document.getElementById("email").value.trim();
 
+  // if the field is empty we add the error message of the empty field and remove the error message from the regex if it is present
   if (!emailValue) {
     emailError.classList.remove("error");
     emailRegexError.classList.add("regex__error");
     email.classList.add("error-text");
     return false;
   }
-  // testing regex
+
+  // if the email does not meet the conditions of the regex, we add the regex error message and remove the empty field error message if it is present
   else if (!regexEmail.test(emailValue)) {
     emailRegexError.classList.remove("regex__error");
     email.classList.add("error-text");
     emailError.classList.add("error");
     return false;
-  } else {
+  }
+
+  //if no errors all error messages are removed
+  else {
     emailRegexError.classList.add("regex__error");
     emailError.classList.add("error");
     email.classList.remove("error-text");
