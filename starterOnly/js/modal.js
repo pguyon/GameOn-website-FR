@@ -299,6 +299,7 @@ function validate(e) {
     checkboxValidation()
   ) {
     e.preventDefault();
+    //if the conditions are met, the confirmation display function is called
     confirmMessage();
   } else {
     // if not validate block the submit
