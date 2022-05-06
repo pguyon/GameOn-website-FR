@@ -45,7 +45,6 @@ function editNav() {
 }
 
 // Regex email
-
 const regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const regexText = /^[A-Za-z]+$/;
 
@@ -67,7 +66,7 @@ function closeModal() {
 }
 
 // TODO #2
-// firstname validation
+// FORM_INPUT firstname validation
 function firstnameValidation() {
   // create variable to focus value and remove spaces
   const firstValue = document.getElementById("first").value.trim();
@@ -100,7 +99,7 @@ function firstnameValidation() {
   }
 }
 
-// lastname validation {
+//FORM_INPUT lastname validation {
 function lastnameValidation() {
   const lastValue = document.getElementById("last").value.trim();
   if (!lastValue) {
@@ -127,7 +126,7 @@ function lastnameValidation() {
   }
 }
 
-// email validation
+//FORM_INPUT email validation
 function emailValidation() {
   const emailValue = document.getElementById("email").value.trim();
 
@@ -151,7 +150,7 @@ function emailValidation() {
   }
 }
 
-// date validation
+//FORM_INPUT date validation
 function dateValidation() {
   const birthdateValue = document.getElementById("birthdate").value.trim();
   // create variable to pick up date
@@ -178,47 +177,61 @@ function dateValidation() {
   }
 }
 
-// quantity validation
+//FORM_INPUT quantity validation
 function quantityValidation() {
   const quantityValue = document.getElementById("quantity").value.trim();
+
+  //we check if the field is empty, if not we display the error message while removing the number check error message
   if (!quantityValue) {
     quantityError.classList.remove("error");
     quantity.classList.add("error-text");
     return false;
   }
-  //check if it is a number
+  //we check if the value is a number, if not, we add the error message of the number while removing the error message of the empty field
   else if (isNaN(quantityValue)) {
     quantityError.classList.remove("error");
     quantity.classList.add("error-text");
     return false;
-  } else {
+  }
+  //if the conditions are met, all error messages are removed
+  else {
     quantityError.classList.add("error");
     quantity.classList.remove("error-text");
     return true;
   }
 }
 
-// location validation
+//FORM_CHECKBOX location validation
 function locationValidation() {
+  //creation of a variable for the selected fields
   const locationValue = document.querySelector(
     "input[name='location']:checked"
   );
+
+  //if no fields are selected, the error message appears
   if (locationValue === null) {
     locationError.classList.remove("error");
     return false;
-  } else {
+  }
+  //if the condition is met, the error message is removed
+  else {
     locationError.classList.add("error");
     return true;
   }
 }
 
-// ckeckbox validation
+//FORM_CHECKBOX ckeckbox validation
 function checkboxValidation() {
+  // creation of a variable to check if the condition is checked
   const checkboxValue = document.getElementById("checkbox1").checked;
+
+  //If the condition is not checked, the error message appears
   if (!checkboxValue) {
     conditionError.classList.remove("error");
     return false;
-  } else {
+  }
+  //If the condition is checked, the error message will disappear
+  else {
     conditionError.classList.add("error");
     return true;
   }
@@ -234,6 +247,7 @@ function validate(e) {
   quantityValidation();
   locationValidation();
   checkboxValidation();
+
   // if form is validate add confirm message
   if (
     firstnameValidation() &&
