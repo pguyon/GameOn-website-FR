@@ -68,9 +68,10 @@ function closeModal() {
 // TODO #2
 // FORM_INPUT firstname validation
 function firstnameValidation() {
-  // create variable to focus value and remove spaces
+  // create a variable to get the value of the input and remove the spaces
   const firstValue = document.getElementById("first").value.trim();
-  // if empty value
+
+  // If the field is empty, we add the empty field error message and remove the other error messages if they are present
   if (!firstValue) {
     //display the error message
     firstError.classList.remove("error");
@@ -79,19 +80,28 @@ function firstnameValidation() {
     // hide regex message error
     firstRegError.classList.add("regex__error");
     return false;
-    // if value <= 2
-  } else if (firstValue.length <= 2) {
+  }
+
+  //if the length of the input value is less than or equal to two,
+  // we add the error message of the length and remove the other error messages if they are present
+  else if (firstValue.length <= 2) {
     firstError.classList.remove("error");
     first.classList.add("error-text");
     firstRegError.classList.add("regex__error");
     return false;
-  } else if (!regexText.test(firstValue)) {
+  }
+
+  //if the value of the input does not fill the regex,
+  // we add the error message of the regex and we remove the other error messages if they are present
+  else if (!regexText.test(firstValue)) {
     firstRegError.classList.remove("regex__error");
     firstError.classList.add("error");
     first.classList.add("error-text");
     return false;
-    // if condition ok
-  } else {
+  }
+
+  //if the conditions are met, all error messages are removed
+  else {
     firstError.classList.add("error");
     firstRegError.classList.add("regex__error");
     first.classList.remove("error-text");
@@ -101,24 +111,36 @@ function firstnameValidation() {
 
 //FORM_INPUT lastname validation {
 function lastnameValidation() {
+  //If the field is empty, we add the empty field error message and remove the other error messages if they are present
   const lastValue = document.getElementById("last").value.trim();
   if (!lastValue) {
     lastError.classList.remove("error");
     last.classList.add("error-text");
     lastRegError.classList.add("regex__error");
     return false;
-  } else if (lastValue.length <= 2) {
+  }
+
+  //if the length of the input value is less than or equal to two,
+  // we add the error message of the length and remove the other error messages if they are present
+  else if (lastValue.length <= 2) {
     lastError.classList.remove("error");
     last.classList.add("error-text");
     lastRegError.classList.add("regex__error");
     return false;
-  } else if (!regexText.test(lastValue)) {
+  }
+
+  //if the value of the input does not fill the regex,
+  // we add the error message of the regex and we remove the other error messages if they are present
+  else if (!regexText.test(lastValue)) {
     document;
     lastRegError.classList.remove("regex__error");
     last.classList.add("error-text");
     lastError.classList.add("error");
     return false;
-  } else {
+  }
+
+  //if the conditions are met, all error messages are removed
+  else {
     lastError.classList.add("error");
     lastRegError.classList.add("regex__error");
     last.classList.remove("error-text");
