@@ -69,30 +69,35 @@
                             <div class="formData">
                                 <label for="first">Prénom</label><br>
                                 <input class="text-control" type="text" id="first" name="first"/><br>
+                                <!-- error message-->
                                 <span id="first__error" class="error">Veuillez entrer 2 caractères minimum pour votre prénom.</span>
                                 <span id="first__regex__error" class="regex__error">Uniquement des lettres.</span>
                             </div>
                             <div class="formData">
                                 <label for="last">Nom</label><br>
                                 <input class="text-control" type="text" id="last" name="last"/><br>
+                                 <!-- error message-->
                                 <span id="last__error" class="error">Veuillez entrer 2 caractères minimum pour votre nom.</span>
                                 <span id="last__regex__error" class="regex__error">Uniquement des lettres.</span>
                             </div>
                             <div class="formData">
                                 <label for="email">E-mail</label><br>
                                 <input class="text-control" type="email" id="email" name="email"/><br>
+                                 <!-- error message-->
                                 <span id="email__error" class="error">Veuillez saisir votre email.</span>
                                 <span id="email__regex__error" class="regex__error">email non valide.</span>
                             </div>
                             <div class="formData">
                                 <label for="birthdate">Date de naissance</label><br>
                                 <input class="text-control" type="date" id="birthdate" name="birthdate"/><br>
+                                 <!-- error message-->
                                 <span id="birth__error" class="error">Veuillez entrer une date de naissance.</span>
                                 <span id="invalidBirth__error" class="regex__error">Date non valide.</span>
                             </div>
                             <div class="formData">
                                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                                 <input type="number" class="text-control" id="quantity" name="quantity" min="1" max="99">
+                                 <!-- error message-->
                                 <span id="quantity__error" class="error">Veuillez choisir un nombre d'events.</span>
                             </div>
                             <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
@@ -137,6 +142,7 @@
                                     Je souhaite être prévenu des prochains évènements.
                                 </label>
                                 <br>
+                                 <!-- error message-->
                                 <span id="checkbox__error" class="error">Veuillez accepter les conditions.</span>
 
                             </div>
@@ -144,6 +150,7 @@
                         </form>
                     </div>
                 </div>
+                 <!-- Conirmation modal-->
                 <div class="content content__confirm">
                     <span class="close"></span>
                     <div class="modal-body">
